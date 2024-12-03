@@ -2,6 +2,7 @@ const getBar = (dataset) => {
   const w = 800;
   const h = 400;
   const padding = 40;
+  const barWidth = w / 275;
   
   const svgContainer = d3.select(".data-stats")
                   .append("svg")
@@ -68,14 +69,18 @@ const getBar = (dataset) => {
               .attr("height", (d) => hScale(d[1]))
               .attr("x", (d, i) => xScale(i))
               .attr("y", (d) => (h - padding) - hScale(d[1]))
+              .attr('index', (d, i) => i)
               .attr("fill", "orange")
-              .on("mouseover", (data, i) => {
+              .on("mouseover", (event, d) => {
+                var i = event.target.getAttribute('index');
                   tooltip.transition()
                          .style("opacity", "1")
                          .style("duration", "0")
+                         .style("left", i * 2.2 + 400 + "px")
+                         .style("top", "330px")
                         
-                  tooltip.text(i[0])
-                         .attr("data-date", i[0])
+                  tooltip.text(d[0])
+                         .attr("data-date", d[0])
               })
               .on("mouseout", () => {
                 tooltip.transition()
