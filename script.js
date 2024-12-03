@@ -11,7 +11,7 @@ const getBar = (dataset) => {
   const tooltip = d3.select(".data-stats")
                     .append("div")
                     .attr("id", "tooltip")
-                    .attr("transform", "translate(100, 50)")
+                    //.attr("transform", "translate(100, 50)")
                     .style("opacity", "0")
                     .style("width", "auto")
                     .style("height", "auto")
@@ -83,6 +83,7 @@ const getBar = (dataset) => {
                 .style("duration", "0")
                
               })
+  
     
   }
 
